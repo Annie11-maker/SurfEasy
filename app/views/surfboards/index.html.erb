@@ -1,21 +1,8 @@
-
-<h1>See our amazing surfboards🌊 🏄🏽‍♂️</h1>
-<p>Surf in style🏄🏾</p>
-
+<h1>See our amazing surfboards 🌊 🏄🏽‍♂️</h1>
+<p>Surf in style 🏄🏾</p>
 <ul>
-<<<<<<< HEAD
-  <%= @surfboards.each do |surfboard| %>
-    <li><%= surfboard.name %></li>
-    <li><%= surfboard.color %></li>
-    <li><%= surfboard.price %></li>
-    <li><%= surfboard.size %></li>
-    <li><%= surfboard.description %></li>
-    <li><%= surfboard.image_url %></li>
-  <%end%>
-=======
   <% @surfboards.each do |surfboard| %>
-    <li><%= link_to surfboard.name, surfboard_path(surfboard) %></li>
+    <li><%= surfboard.name %></li>
     <br>
   <% end %>
->>>>>>> 3968e92 (SurfEasy 21/1 5.10 PM)
 </ul>
