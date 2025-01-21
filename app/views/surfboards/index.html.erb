@@ -1,2 +1,13 @@
-<h1>Surfboards#index</h1>
-<p>Find me in app/views/surfboards/index.html.erb</p>
+<h1>See our amazing surfboards🌊 🏄🏽‍♂️</h1>
+<p>Surf in style🏄🏾</p>
+
+<ul>
+  <%= @surfboard.each do |surfboard| %>
+    <li><%= surfboard.name %></li>
+    <li><%= surfboard.color %></li>
+    <li><%= surfboard.price %></li>
+    <li><%= surfboard.size %></li>
+    <li><%= surfboard.description %></li>
+    <li><%= surfboard.image_url %></li>
+  <%end%>
+</ul>
