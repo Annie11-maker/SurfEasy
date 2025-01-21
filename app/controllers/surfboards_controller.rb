@@ -1,6 +1,6 @@
 class SurfboardsController < ApplicationController
   def index
-    @surfboard = Surfboard.all
+    @surfboards = Surfboard.all
   end
 
   def show
