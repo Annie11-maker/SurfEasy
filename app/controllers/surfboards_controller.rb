@@ -4,6 +4,7 @@ class SurfboardsController < ApplicationController
   end
 
   def show
+    @surfboard = Surfboard.new
   end
 
   def edit
