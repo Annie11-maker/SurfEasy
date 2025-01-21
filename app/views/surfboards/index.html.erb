@@ -1,1 +1,7 @@
 <h1>SURFBOARD INDEX PAGE</h1>
+<ul>
+  <% @surfboards.each do |surfboard| %>
+    <li><%= surfboard.name %></li>
+    <br>
+  <%end%>
+</ul>
