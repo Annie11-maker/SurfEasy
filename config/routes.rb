@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :surfboards do
     resources :bookings, only: [:create, :index, :new, :show]
+    resources :reviews, only: [:create]
   end
   resources :bookings, only: [:destroy]
 end
