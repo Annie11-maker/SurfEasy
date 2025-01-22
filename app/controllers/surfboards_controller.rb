@@ -1,4 +1,5 @@
 class SurfboardsController < ApplicationController
+  before_action :set_surfboard, only: [:destroy]
   def index
     @surfboards = Surfboard.all
   end
@@ -29,6 +30,8 @@ class SurfboardsController < ApplicationController
   end
 
   def destroy
+    @surfboard.destroy
+    redirect_to surfboards_path, status: :see_other
   end
 
   private

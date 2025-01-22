@@ -9,6 +9,8 @@
       <p><strong>Size:</strong> <%= @surfboard.size %></p>
       <p><strong>Owner:</strong> <%= @surfboard.user.first_name %> <%= @surfboard.user.last_name %></p>
       <%= link_to "Book this Surfboard", new_surfboard_booking_path(@surfboard), class:"btn btn-primary" %>
+      <%= link_to "Delete Surfboard", surfboard_path(@surfboard),
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger"%>
     </div>
   </div>
 </div>
