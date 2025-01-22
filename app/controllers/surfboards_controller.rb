@@ -6,6 +6,7 @@ class SurfboardsController < ApplicationController
 
   def show
     @surfboard = Surfboard.find(params[:id])
+    @review = Review.new
   end
 
   def edit
