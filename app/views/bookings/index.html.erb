@@ -1,2 +1,9 @@
 <h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<h1>View Your Bookings 🌊 🏄🏽‍♂️</h1>
+<p>Surf in style 🏄🏾</p>
+<ul>
+  <% @bookings.each do |booking| %>
+    <li><%= link_to booking.name, surfboard_bookings_path(booking) %></li>
+    <br>
+  <% end %>
+</ul>
