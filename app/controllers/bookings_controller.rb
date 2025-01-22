@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
   end
 
   def new
+    @surfboard = Surfboard.new
   end
 
   def destroy
