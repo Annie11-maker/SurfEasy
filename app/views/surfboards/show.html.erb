@@ -1,6 +1,7 @@
-
+<div class="container mt-4">
   <img src="<%= @surfboard.image_url %>" alt="<%= @surfboard.name %> image" width="200">
-
+  <div class="card-trip-infos">
+    <div>
       <h1><%= @surfboard.name %></h1>
       <p><strong>Description:</strong> <%= @surfboard.description %></p>
       <p><strong>Price:</strong> $<%= @surfboard.price %></p>
@@ -10,8 +11,11 @@
       <%= link_to "Book this Surfboard", new_surfboard_booking_path(@surfboard), class:"btn btn-primary" %>
       <%= link_to "Delete Surfboard", surfboard_path(@surfboard),
           data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger"%>
+    </div>
+  </div>
+</div>
 
-
+<div>
   <h2>New Review</h2>
   <%= simple_form_for [@surfboard, @review] do |f| %>
     <%= f.input :comment %>
@@ -25,3 +29,4 @@
     <h3>Rating: <%= review.rating %></h3>
     <h3>------------------------</h3>
   <% end %>
+</div>
