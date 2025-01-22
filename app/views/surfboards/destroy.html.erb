@@ -1,2 +1,6 @@
 <h1>Surfboards#destroy</h1>
+<%= link_to "Delete",
+  surfboard_path(@surfboard),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
 <p>Find me in app/views/surfboards/destroy.html.erb</p>
