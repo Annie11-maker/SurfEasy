@@ -1,8 +1,11 @@
-<h1>See our amazing surfboards 🌊 🏄🏽‍♂️</h1>
-<p>Surf in style 🏄🏾</p>
-<ul>
-  <% @surfboards.each do |surfboard| %>
-    <li><%= link_to surfboard.name, surfboard_path(surfboard) %></li>
-    <br>
-  <% end %>
-</ul>
+<div class="container">
+  <h1>See our amazing surfboards 🌊 🏄🏽‍♂️</h1>
+  <p>Surf in style 🏄🏾</p>
+  <div class="cards">
+    <% @surfboards.each do |surfboard| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= surfboard.image_url %>)">
+        <%= link_to surfboard.name, surfboard_path(surfboard) %>
+      </div>
+    <% end %>
+    </div>
+</div>
