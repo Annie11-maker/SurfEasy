@@ -1,9 +1,9 @@
 class Surfboard < ApplicationRecord
   belongs_to :user
   has_many :bookings
+  has_one_attached :photo
 
   validates :name, presence: true
-  validates :image_url, presence: true
   validates :description, presence: true, length: { maximum: 500 }
   validates :size, presence: true
   validates :color, presence: true
