@@ -9,7 +9,10 @@
         <p><strong>Price:</strong> $<%= booking.surfboard.price %></p>
         <p><strong>Color:</strong> <%= booking.surfboard.color %></p>
         <p><strong>Size:</strong> <%= booking.surfboard.size %></p>
-        raise
+        <p><%= link_to booking_path(booking),
+        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %></p>
       </li>
     <% end %>
   </ul>
