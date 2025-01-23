@@ -115,7 +115,9 @@
 
 .card-product:hover {
   transform: scale(1.05);
+
 }
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
@@ -149,4 +151,5 @@
   .cards {
     grid-template-columns: 1fr 1fr 1fr;
   }
+}
 }

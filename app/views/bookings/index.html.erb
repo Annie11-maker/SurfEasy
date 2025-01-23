@@ -22,5 +22,17 @@
 <p>------------------------</p>
 <br>
 <h1>View Your Surfboards 🌊 🏄🏽‍♂️</h1>
-<p>------------------------</p>
+<p>
+  <ul>
+  <% @surfboards.where(user_id: current_user.id).each do |surfboard| %>
+    <li>
+      <%= link_to surfboard.name, surfboard_path(surfboard) %>
+      <p><%= image_tag surfboard.image_url if surfboard.image_url.present? %></p>
+      <p><strong>Price:</strong> $<%= surfboard.price %></p>
+      <p><strong>Color:</strong> <%= surfboard.color %></p>
+      <p><strong>Size:</strong> <%= surfboard.size %></p>
+    </li>
+  <% end %>
+</ul>
+</p>
 <br>
