@@ -4,7 +4,7 @@
   <% else %>
     <img src="<%= @surfboard.image_url %>" alt="<%= @surfboard.name %> image" width="200">
   <% end %>
-  <div class="card-trip-infos">
+  <div class="card-surfboard-infos">
     <div>
       <h1><%= @surfboard.name %></h1>
       <p><strong>Description:</strong> <%= @surfboard.description %></p>
@@ -13,9 +13,14 @@
       <p><strong>Size:</strong> <%= @surfboard.size %></p>
       <p><strong>Owner name:</strong> <%= @surfboard.user.first_name %> <%= @surfboard.user.last_name %></p>
       <%= link_to "Book this Surfboard", new_surfboard_booking_path(@surfboard), class:"btn btn-primary" %>
+      <%= link_to surfboards_path, class: "nav-link" do %>
+            <i class="fa-solid fa-star"></i>
+            <% end  %>
       <% if @surfboard.user == current_user %>
-        <%= link_to "Delete Surfboard", surfboard_path(@surfboard),
-          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger"%>
+        <%= link_to surfboard_path(@surfboard),
+        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash-alt"></i>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -31,7 +36,7 @@
   <h3>Reviews</h3>
   <% @surfboard.reviews.each do |review| %>
     <p><%= review.comment %></p>
-    <p>Rating: <%= review.rating %></p>
+    <p>Rating: <%= review.rating %><%= '⭐'* review.rating %></p>
     <p>------------------------</p>
   <% end %>
 </div>
