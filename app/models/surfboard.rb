@@ -4,7 +4,7 @@ class Surfboard < ApplicationRecord
   has_one_attached :photo
   has_many :reviews
 
-  #geocoded_by :address
+  geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
   # validates :name, presence: true
   # validates :description, presence: true, length: { maximum: 500 }
