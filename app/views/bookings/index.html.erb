@@ -16,12 +16,8 @@
     </li>
   <% end %>
 </ul>
-<p>------------------------</p>
-<br>
-<h1>View Your Booking Requests 🌊 🏄🏽‍♂️</h1>
-<p>------------------------</p>
-<br>
-<h1>View Your Surfboards 🌊 🏄🏽‍♂️</h1>
+<p>
+  <h1>View Your Surfboards 🌊 🏄🏽‍♂️</h1>
 <p>
   <ul>
   <% @surfboards.where(user_id: current_user.id).each do |surfboard| %>
@@ -31,6 +27,24 @@
       <p><strong>Price:</strong> $<%= surfboard.price %></p>
       <p><strong>Color:</strong> <%= surfboard.color %></p>
       <p><strong>Size:</strong> <%= surfboard.size %></p>
+    </li>
+  <% end %>
+</ul>
+</p>
+</p>
+<br>
+<h1>View Your Booking Requests 🌊 🏄🏽‍♂️</h1>
+<p>
+  <ul>
+  <% @bookings.each do |booking| %>
+    <li>
+      <h2>Booking for <%= booking.surfboard.name %></h2>
+      <p><%= image_tag booking.surfboard.image_url if booking.surfboard.image_url.present? %></p>
+      <p><strong>Start Time:</strong> <%= booking.start_time %></p>
+      <p><strong>End Time:</strong> <%= booking.end_time %></p>
+      <p><strong>Price:</strong> $<%= booking.surfboard.price %></p>
+      <p><strong>Color:</strong> <%= booking.surfboard.color %></p>
+      <p><strong>Size:</strong> <%= booking.surfboard.size %></p>
     </li>
   <% end %>
 </ul>
