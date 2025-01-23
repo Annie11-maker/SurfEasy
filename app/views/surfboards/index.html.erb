@@ -3,9 +3,15 @@
   <p>Surf in style 🏄🏾</p>
   <div class="cards">
     <% @surfboards.each do |surfboard| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= surfboard.image_url %>)">
-        <%= link_to surfboard.name, surfboard_path(surfboard) %>
+      <div class="card-product">
+      <img src = <%= surfboard.image_url%>>
+        <div class="card-product-infos">
+          <%= link_to surfboard.name, surfboard_path(surfboard) %>
+          <p>Size: <%= surfboard.size %></p>
+          <p>Price: £<%= surfboard.price %></p>
+          <p>Description: <%= surfboard.description %></p>
+        </div>
       </div>
     <% end %>
+      </div>
     </div>
-</div>
