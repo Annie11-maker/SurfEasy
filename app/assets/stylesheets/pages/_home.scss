@@ -1,1 +1,24 @@
 // Specific CSS for your home-page
+.landing-page {
+  background-image: asset-url("Surfing.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat; /* Do not repeat the image */
+  display: flex;
+  // justify-content: right;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: right;
+  color: white; /* Ensure text is visible */
+}
+
+.content {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  margin-right: 20px; /* Optional: Add space between content and edge of screen */
+  text-align: center;
+}
