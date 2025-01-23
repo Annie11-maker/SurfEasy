@@ -2,7 +2,7 @@
 <h1>View Your Bookings 🌊 🏄🏽‍♂️</h1>
 <p>Surf in style 🏄🏾</p>
 <!-- app/views/restaurants/_form.html.erb -->
-<%= form_with model: @surfboard do |f| %>
+<%= simple_form_for [@surfboard, @booking] do |f| %>
   <%= f.label :start_time, "Start Time" %>
   <%= f.datetime_select :start_time %>
   <%= f.label :end_time, "End Time" %>
