@@ -1,8 +1,15 @@
 <h1>View Your Bookings 🌊 🏄🏽‍♂️</h1>
-<p>Surf in style 🏄🏾</p>
 <ul>
   <% @bookings.each do |booking| %>
-    <li><%= link_to booking.name, surfboard_bookings_path(booking) %></li>
+    <li><%= link_to booking.surfboard.name, surfboard_bookings_path(booking) %></li>
     <br>
   <% end %>
 </ul>
+<p>------------------------</p>
+<br>
+<h1>View Your Booking Requests 🌊 🏄🏽‍♂️</h1>
+<p>------------------------</p>
+<br>
+<h1>View Your Surfboards 🌊 🏄🏽‍♂️</h1>
+<p>------------------------</p>
+<br>
