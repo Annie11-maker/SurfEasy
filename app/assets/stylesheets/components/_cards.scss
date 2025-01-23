@@ -80,9 +80,11 @@
   overflow: hidden;
   height: 200px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  border-radius: 8px;
+  box-shadow: 12px 7px 6px rgba(0, 0, 0, 0.1);
 }
 
 .card-product img {
@@ -111,6 +113,9 @@
   // margin-top: 10px;
 }
 
+.card-product:hover {
+  transform: scale(1.05);
+}
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
