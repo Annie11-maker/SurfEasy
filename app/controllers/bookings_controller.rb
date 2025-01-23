@@ -6,20 +6,36 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find(params[:id])
   end
 
   def create
     @booking = Booking.new(booking_params)
+    @surfboard= Surfboard.find(params[:surfboard_id])
     @booking.user = current_user
-    @booking.save
-    redirect_to bookings_path
+    @booking.surfboard = @surfboard
+    @booking.status = "pending"
+
+    if @booking.save
+
+      redirect_to booking_path(@booking)
+      # raise
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def new
     @booking = Booking.new
+    @surfboard = Surfboard.find(params[:surfboard_id])
   end
 
   def destroy
+  end
+
+  private
+  def booking_params
+    params.require(:booking).permit(:start_time, :end_time, :surfboard_id)
   end
 end
 
