@@ -4,7 +4,11 @@
   <div class="cards">
     <% @surfboards.each do |surfboard| %>
       <div class="card-product">
-      <img src = <%= surfboard.image_url%>>
+      <% if surfboard.photo.attached? %>
+        <%= cl_image_tag surfboard.photo.key, crop: :fill %>
+      <% else %>
+        <img src="<%= surfboard.image_url %>" alt="<%= surfboard.name %> image" width="200">
+      <% end %>
         <div class="card-product-infos">
           <%= link_to surfboard.name, surfboard_path(surfboard) %>
           <p>Size: <%= surfboard.size %></p>
