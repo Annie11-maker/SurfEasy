@@ -26,8 +26,8 @@
             <%= image_tag "https://media.licdn.com/dms/image/v2/D4E03AQFPF7NTlnIP3Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729376318083?e=1743033600&v=beta&t=gaPt8pCqX5ABZdnpYH1Yty1A8BckWGYi0gCvj4BaIfA", class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My Bookings", '/surfboards/:surfboard_id/bookings', class: "dropdown-item" %>
-              <%= link_to "Favourites", "#", class: "dropdown-item" %>
+
+              <%= link_to "My Dashboard", bookings_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
