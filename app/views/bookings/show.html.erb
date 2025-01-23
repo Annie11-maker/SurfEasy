@@ -1,2 +1,16 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<div class="container">
+  <h2>Booked Surfboards</h2>
+
+  <ul>
+    <% @bookings.each do |booking| %>
+      <li>
+        <%= link_to booking.surfboard.name, surfboard_path(booking.surfboard) %>
+        <p><%= image_tag booking.surfboard.image_url if booking.surfboard.image_url.present? %></p>
+        <p><strong>Price:</strong> $<%= booking.surfboard.price %></p>
+        <p><strong>Color:</strong> <%= booking.surfboard.color %></p>
+        <p><strong>Size:</strong> <%= booking.surfboard.size %></p>
+        raise
+      </li>
+    <% end %>
+  </ul>
+</div>
