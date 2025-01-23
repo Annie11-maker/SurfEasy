@@ -1,12 +1,12 @@
-<h1>Create a new Surfboard</h1>
 <div class="container">
+  <h1>Add your very own Surfboard</h1>
   <%= simple_form_for(@surfboard) do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :color %>
     <%= f.input :size %>
     <%= f.input :price %>
-    <%= f.input :photo, as: :file %>  <!-- This will allow the user to upload a file -->
+    <%= f.input :photo, as: :file %>
     <%= f.submit %>
   <% end %>
 <div>
