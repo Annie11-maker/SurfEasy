@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   def index
+    @surfboards = Surfboard.where(user_id: current_user.id)
     @bookings = current_user.bookings
   end
   def show
