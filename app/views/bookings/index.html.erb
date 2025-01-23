@@ -1,8 +1,19 @@
 <h1>View Your Bookings 🌊 🏄🏽‍♂️</h1>
 <p>Surf in style 🏄🏾</p>
 <ul>
-  <% @bookings.each do |booking| %>
-    <li><%= link_to booking.name, surfboard_bookings_path(booking) %></li>
-    <br>
-  <% end %>
+  <ul>
+    <% @bookings.each do |booking| %>
+      <li>
+        <%= link_to booking.surfboard.name, surfboard_path(booking.surfboard) %>
+        <p><%= image_tag booking.surfboard.image_url if booking.surfboard.image_url.present? %></p>
+        <p><strong>Price:</strong> $<%= booking.surfboard.price %></p>
+        <p><strong>Color:</strong> <%= booking.surfboard.color %></p>
+        <p><strong>Size:</strong> <%= booking.surfboard.size %></p>
+        <p><%= link_to booking_path(booking),
+        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %></p>
+      </li>
+    <% end %>
+  </ul>
 </ul>
