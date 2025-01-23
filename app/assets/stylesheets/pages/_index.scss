@@ -1,11 +1,13 @@
 // Import page-specific CSS files here.
 @import "home";
 body {
-  background-image: url('https://previews.123rf.com/images/droidworks/droidworks1607/droidworks160700036/59706252-beach-background-with-surf-boards-photorealistic-vector.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  // background-image: url('https://previews.123rf.com/images/droidworks/droidworks1607/droidworks160700036/59706252-beach-background-with-surf-boards-photorealistic-vector.jpg');
+  // background-size: cover;
+  // background-position: center;
+  // background-repeat: no-repeat;
   margin: 0;
   height: 100%;
-  color: white; /* Adjust text color for readability */
+  color: white;
+  background-color: #0dcaf0 !important;
+  /* Adjust text color for readability */
 }
