@@ -1,12 +1,23 @@
 <div class="container">
-  <h2>Congratulations! You have booked <%= @booking.surfboard.name %></h2>
-   <p><%= image_tag @booking.surfboard.image_url if @booking.surfboard.image_url.present? %></p>
-        <p><strong>Price:</strong> $<%= @booking.surfboard.price %></p>
-        <p><strong>Color:</strong> <%= @booking.surfboard.color %></p>
-        <p><strong>Size:</strong> <%= @booking.surfboard.size %></p>
-        <p><%= link_to booking_path(@booking),
-        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-        <i class="fas fa-trash-alt"></i>
-        <% end %></p>
-        <%= link_to "See All Your Bookings", bookings_path %>
+  <div class="card mb-3" style="max-width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Congratulations! You have booked <%= @booking.surfboard.name %></h5>
+      <% if @booking.surfboard.image_url.present? %>
+        <div class="text-center">
+          <%= image_tag @booking.surfboard.image_url, class: "img-fluid rounded" %>
+        </div>
+      <% end %>
+      <p class="card-text"><strong>Price:</strong> $<%= @booking.surfboard.price %></p>
+      <p class="card-text"><strong>Color:</strong> <%= @booking.surfboard.color %></p>
+      <p class="card-text"><strong>Size:</strong> <%= @booking.surfboard.size %></p>
+      <div class="d-flex justify-content-between align-items-center">
+        <%= link_to booking_path(@booking),
+                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                    class: "btn btn-danger btn-sm" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <%= link_to "See All Your Bookings", bookings_path, class: "btn btn-primary btn-sm" %>
+      </div>
+    </div>
+  </div>
 </div>
