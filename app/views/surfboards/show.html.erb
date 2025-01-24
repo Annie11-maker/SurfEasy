@@ -27,7 +27,7 @@
         <div class="d-flex align-items-center mb-1">
           <% if current_user.favorites.find_by(surfboard: @surfboard).nil? %>
             <%= simple_form_for [@surfboard, @favorite] do |f| %>
-              <%= f.submit "⭐Add to Favorites", class: "btn btn-primary6" %>
+              <%= f.submit "⭐Add to Favorites", class: "btn btn-primary" %>
             <% end %>
           <% else %>
             <p>This surfboard is already in your favorites.</p>
