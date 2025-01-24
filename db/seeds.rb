@@ -10,6 +10,7 @@
 
 # 1. Clean the database 🗑️
 puts 'Cleaning database...'
+Booking.destroy_all
 Surfboard.destroy_all
 User.destroy_all
 
@@ -75,7 +76,7 @@ Surfboard.create!(
 
 Surfboard.create!(
   name: 'Beginner Softtop',
-  image_url: 'https://example.com/images/beginner_softtop.jpg',
+  image_url: 'https://plus.unsplash.com/premium_photo-1676645882464-45ac0299197a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   description: 'A perfect board for beginners with a soft top for safety.',
   price: 350.00,
   user: marco,
