@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :surfboards
   has_many :bookings
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_surfboards, through: :favorites, source: :surfboard
 
   validates :user_name, presence: true, uniqueness: true
   validates :first_name, presence: true

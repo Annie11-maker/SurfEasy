@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <h1>My favourites</h1>
+<div class="cards">
+  <% @favourites.each do |favourite| %>
+    <div class="card-category">
+      <h1><%= favourite.surfboard.name %></h1>
+      <%= link_to favourite_path(favourite),
+        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+</div>

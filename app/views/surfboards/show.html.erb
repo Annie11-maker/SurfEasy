@@ -1,44 +1,66 @@
 <div class="container mt-4">
-  <% if @surfboard.photo.attached? %>
-    <%= cl_image_tag @surfboard.photo.key, height: 300, width: 400, crop: :fill %>
-  <% else %>
-    <img src="<%= @surfboard.image_url %>" alt="<%= @surfboard.name %> image" width="200">
-  <% end %>
-  <div class="card-surfboard-infos">
-    <div>
-      <h1><%= @surfboard.name %></h1>
-      <p><strong>Description:</strong> <%= @surfboard.description %></p>
-      <p><strong>Price:</strong> $<%= @surfboard.price %></p>
-      <p><strong>Color:</strong> <%= @surfboard.color %></p>
-      <p><strong>Size:</strong> <%= @surfboard.size %></p>
-      <p><strong>Owner name:</strong> <%= @surfboard.user.first_name %> <%= @surfboard.user.last_name %></p>
-      <%= link_to "Book this Surfboard", new_surfboard_booking_path(@surfboard), class:"btn btn-primary" %>
-      <%= link_to surfboards_path, class: "nav-link" do %>
-            <i class="fa-solid fa-star"></i>
-            <% end  %>
-      <% if @surfboard.user == current_user %>
-        <%= link_to surfboard_path(@surfboard),
-        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-        <i class="fas fa-trash-alt"></i>
+  <div class="row">
+    <div class="col-md-4">
+      <% if @surfboard.photo.attached? %>
+        <%= cl_image_tag @surfboard.photo.key, height: 200, width: 300, crop: :fill, class: "img-fluid rounded" %>
+      <% else %>
+        <img src="<%= @surfboard.image_url %>" alt="<%= @surfboard.name %> image" class="img-fluid rounded" width="300">
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <div>
+        <h1 class="mb-1"><%= @surfboard.name %></h1>
+        <p><strong>Description:</strong> <%= @surfboard.description %></p>
+        <p><strong>Price:</strong> $<%= @surfboard.price %></p>
+        <p><strong>Color:</strong> <%= @surfboard.color %></p>
+        <p><strong>Size:</strong> <%= @surfboard.size %></p>
+        <p><strong>Owner:</strong> <%= @surfboard.user.first_name %> <%= @surfboard.user.last_name %></p>
+        <% if @surfboard.address.present? %>
+          <p><strong>Address:</strong> <%= @surfboard.address %></p>
         <% end %>
+
+        <div class="d-flex align-items-center mb-1">
+          <%= link_to "Book this Surfboard", new_surfboard_booking_path(@surfboard), class: "btn btn-primary btn-lg" %>
+        </div>
+
+        <div class="d-flex align-items-center mb-1">
+          <%= link_to surfboards_path, class: "btn btn-warning" do %>
+            <i class="fa-solid fa-star">Add to Favourites</i>
+          <% end %>
+        </div>
+
+        <% if @surfboard.user == current_user %>
+          <%= link_to surfboard_path(@surfboard), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-warning mt-2" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="mt-4" style="width: 100%; height: 300px;" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h3>Reviews</h3>
+      <% @surfboard.reviews.each do |review| %>
+        <div class="review mb-3">
+          <p><%= review.comment %></p>
+          <p>Rating: <%= review.rating %><%= '⭐' * review.rating %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-6">
+      <h3>Add a new Review</h3>
+      <%= simple_form_for [@surfboard, @review] do |f| %>
+        <%= f.input :comment, label: "Review", input_html: { class: "form-control" } %>
+        <%= f.input :rating, collection: 1..5, label: "Rating", input_html: { class: "form-control" } %>
+        <%= f.submit "Submit Review", class: "btn btn-primary mt-2" %>
       <% end %>
     </div>
   </div>
-<br>
-  <div>
-  <h3>Add a new Review</h3>
-  <%= simple_form_for [@surfboard, @review] do |f| %>
-    <%= f.input :comment %>
-    <%= f.input :rating, collection: 1..5 %>
-    <%= f.submit "Submit Review", class: "btn btn-primary" %>
-  <% end %>
-<br>
-  <h3>Reviews</h3>
-  <% @surfboard.reviews.each do |review| %>
-    <p><%= review.comment %></p>
-    <p>Rating: <%= review.rating %><%= '⭐'* review.rating %></p>
-    <p>------------------------</p>
-  <% end %>
-</div>
-
 </div>

@@ -1,38 +1,57 @@
-<h1>DASHBOARD 🌊 🏄🏽‍♂️</h1>
+<div class="container mt-3">
+  <h1 class="text-center mb-4">Dashboard</h1>
 
-<h1>View Your Bookings 🌊 🏄🏽‍♂️</h1>
-<ul>
-  <% @bookings.each do |booking| %>
-    <li>
-      <%= link_to booking.surfboard.name, surfboard_path(booking.surfboard) %>
-      <p><%= image_tag booking.surfboard.image_url if booking.surfboard.image_url.present? %></p>
-      <p><strong>Price:</strong> $<%= booking.surfboard.price %></p>
-      <p><strong>Color:</strong> <%= booking.surfboard.color %></p>
-      <p><strong>Size:</strong> <%= booking.surfboard.size %></p>
-      <p><%= link_to booking_path(booking),
-      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-      <i class="fas fa-trash-alt"></i>
-    <% end %></p>
-    </li>
-  <% end %>
-</ul>
-<p>------------------------</p>
-<br>
-<h1>View Your Booking Requests 🌊 🏄🏽‍♂️</h1>
-<p>------------------------</p>
-<br>
-<h1>View Your Surfboards 🌊 🏄🏽‍♂️</h1>
-<p>
-  <ul>
-  <% @surfboards.where(user_id: current_user.id).each do |surfboard| %>
-    <li>
-      <%= link_to surfboard.name, surfboard_path(surfboard) %>
-      <p><%= image_tag surfboard.image_url if surfboard.image_url.present? %></p>
-      <p><strong>Price:</strong> $<%= surfboard.price %></p>
-      <p><strong>Color:</strong> <%= surfboard.color %></p>
-      <p><strong>Size:</strong> <%= surfboard.size %></p>
-    </li>
-  <% end %>
-</ul>
-</p>
-<br>
+  <!-- Bookings Section -->
+  <div class="mb-5">
+    <h2 class="text-primary">View Your Bookings 🌊 🏄🏽‍♂️</h2>
+    <div class="row">
+      <% @bookings.each do |booking| %>
+        <div class="col-md-2 col-sm-4 mb-4">  <!-- Reduced card size further -->
+          <div class="card">
+            <%= link_to surfboard_path(booking.surfboard) do %>
+              <img class="card-img-top" src="<%= booking.surfboard.image_url %>" alt="<%= booking.surfboard.name %>" style="height: 150px; width: 100%; object-fit: contain;"> <!-- Full image, no crop -->
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= booking.surfboard.name %></h5>
+              <p><strong>Price:</strong> $<%= booking.surfboard.price %></p>
+              <p><strong>Color:</strong> <%= booking.surfboard.color %></p>
+              <p><strong>Size:</strong> <%= booking.surfboard.size %></p>
+              <%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-primary" do %>  <!-- Changed color to blue -->
+                <i class="fas fa-trash-alt"></i>  <!-- Only icon shows -->
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Booking Requests Section -->
+  <div class="mb-5">
+    <h2 class="text-primary">View Your Booking Requests 🌊 🏄🏽‍♂️</h2>
+    <p>------------------------</p>
+    <br>
+  </div>
+
+  <!-- Surfboards Section -->
+  <div class="mb-5">
+    <h2 class="text-primary">View Your Surfboards 🌊 🏄🏽‍♂️</h2>
+    <div class="row">
+      <% @surfboards.where(user_id: current_user.id).each do |surfboard| %>
+        <div class="col-md-2 col-sm-4 mb-4">  <!-- Reduced card size further -->
+          <div class="card">
+            <%= link_to surfboard_path(surfboard) do %>
+              <img class="card-img-top" src="<%= surfboard.image_url %>" alt="<%= surfboard.name %>" style="height: 150px; width: 100%; object-fit: contain;"> <!-- Full image, no crop -->
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= surfboard.name %></h5>
+              <p><strong>Price:</strong> $<%= surfboard.price %></p>
+              <p><strong>Color:</strong> <%= surfboard.color %></p>
+              <p><strong>Size:</strong> <%= surfboard.size %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

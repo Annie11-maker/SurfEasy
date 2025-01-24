@@ -7,6 +7,15 @@ class SurfboardsController < ApplicationController
   def show
     @surfboard = Surfboard.find(params[:id])
     @review = Review.new
+    @favourite = Favorite.new
+    @surfboards = Surfboard.all
+    @markers = @surfboards.geocoded.map do |surfboard|
+      {
+        lat: surfboard.latitude,
+        lng: surfboard.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {surfboard: surfboard})
+      }
+    end
   end
 
   def edit
@@ -37,7 +46,7 @@ class SurfboardsController < ApplicationController
 
   private
   def surfboard_params
-    params.require(:surfboard).permit(:name, :description, :color, :size, :price, :photo)
+    params.require(:surfboard).permit(:name, :description, :color, :size, :price, :photo, :address)
   end
   def set_surfboard
     @surfboard = Surfboard.find(params[:id])
