@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :surfboards do
     resources :bookings, only: [:create, :new]
     resources :reviews, only: [:create]
-    resource :favorite, only: [:create]
+    resource :favorites, only: [:create]
   end
   resources :bookings, only: [:index, :show, :destroy]
   resources :favorites, only: [:index, :destroy]

@@ -25,8 +25,12 @@
         </div>
 
         <div class="d-flex align-items-center mb-1">
-          <%= link_to surfboards_path, class: "btn btn-warning" do %>
-            <i class="fa-solid fa-star">Add to Favourites</i>
+          <% if current_user.favorites.find_by(surfboard: @surfboard).nil? %>
+            <%= simple_form_for [@surfboard, @favorite] do |f| %>
+              <%= f.submit "⭐Add to Favorites", class: "btn btn-primary6" %>
+            <% end %>
+          <% else %>
+            <p>This surfboard is already in your favorites.</p>
           <% end %>
         </div>
 

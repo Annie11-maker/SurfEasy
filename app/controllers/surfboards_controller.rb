@@ -7,7 +7,7 @@ class SurfboardsController < ApplicationController
   def show
     @surfboard = Surfboard.find(params[:id])
     @review = Review.new
-    @favourite = Favorite.new
+    @favorite = current_user.favorites.new
     @surfboards = Surfboard.all
     @markers = @surfboards.geocoded.map do |surfboard|
       {
