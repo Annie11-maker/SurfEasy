@@ -6,7 +6,7 @@
     <h2 class="text-primary">View Your Bookings 🌊 🏄🏽‍♂️</h2>
     <div class="row">
       <% @bookings.each do |booking| %>
-        <div class="col-md-2 col-sm-4 mb-4">  <!-- Reduced card size further -->
+        <div class="col-md-2 col-sm-4 mb-4">
           <div class="card">
             <%= link_to surfboard_path(booking.surfboard) do %>
               <img class="card-img-top" src="<%= booking.surfboard.image_url %>" alt="<%= booking.surfboard.name %>" style="height: 150px; width: 100%; object-fit: contain;"> <!-- Full image, no crop -->
@@ -17,7 +17,7 @@
               <p><strong>Color:</strong> <%= booking.surfboard.color %></p>
               <p><strong>Size:</strong> <%= booking.surfboard.size %></p>
               <%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-primary" do %>  <!-- Changed color to blue -->
-                <i class="fas fa-trash-alt"></i>  <!-- Only icon shows -->
+                <i class="fas fa-trash-alt"></i>
               <% end %>
             </div>
           </div>
@@ -26,22 +26,25 @@
     </div>
   </div>
 
-  <!-- Booking Requests Section -->
+
   <div class="mb-5">
     <h2 class="text-primary">View Your Booking Requests 🌊 🏄🏽‍♂️</h2>
     <p>------------------------</p>
     <br>
   </div>
 
-  <!-- Surfboards Section -->
   <div class="mb-5">
     <h2 class="text-primary">View Your Surfboards 🌊 🏄🏽‍♂️</h2>
     <div class="row">
       <% @surfboards.where(user_id: current_user.id).each do |surfboard| %>
-        <div class="col-md-2 col-sm-4 mb-4">  <!-- Reduced card size further -->
+        <div class="col-md-2 col-sm-4 mb-4">
           <div class="card">
             <%= link_to surfboard_path(surfboard) do %>
-              <img class="card-img-top" src="<%= surfboard.image_url %>" alt="<%= surfboard.name %>" style="height: 150px; width: 100%; object-fit: contain;"> <!-- Full image, no crop -->
+              <% if surfboard.photo.attached? %>
+                <%= cl_image_tag surfboard.photo.key, crop: :fill, class: "card-img-top", style: "height: 150px; width: 100%; object-fit: contain;" %>
+              <% else %>
+                <img class="card-img-top" src="<%= surfboard.image_url %>" alt="<%= surfboard.name %>" style="height: 150px; width: 100%; object-fit: contain;">
+              <% end %>
             <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= surfboard.name %></h5>
