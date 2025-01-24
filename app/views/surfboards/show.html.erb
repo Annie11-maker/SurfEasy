@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-md-4">
       <% if @surfboard.photo.attached? %>
-        <%= cl_image_tag @surfboard.photo.key, height: 200, width: 300, crop: :fill, class: "img-fluid rounded" %>
+        <%= cl_image_tag @surfboard.photo.key, class: "img-fluid rounded", style: "width: 300px; height: 400px; object-fit: contain;" %>
       <% else %>
-        <img src="<%= @surfboard.image_url %>" alt="<%= @surfboard.name %> image" class="img-fluid rounded" width="300">
+        <img src="<%= @surfboard.image_url %>" alt="<%= @surfboard.name %> image" class="img-fluid rounded" style="width: 300px; height: 400px; object-fit: contain;">
       <% end %>
     </div>
 
