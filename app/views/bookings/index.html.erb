@@ -8,7 +8,11 @@
         <div class="col-md-2 col-sm-4 mb-4">
           <div class="card d-flex flex-column" style="height: 400px;">
             <%= link_to surfboard_path(booking.surfboard) do %>
-              <img class="card-img-top" src="<%= booking.surfboard.image_url %>" alt="<%= booking.surfboard.name %>" style="height: 150px; width: 100%; object-fit: contain;">
+              <% if booking.surfboard.photo.attached? %>
+                <%= cl_image_tag booking.surfboard.photo.key, crop: :fill, class: "card-img-top", style: "height: 150px; width: 100%; object-fit: contain;" %>
+              <% else %>
+                <img class="card-img-top" src="<%= booking.surfboard.image_url %>" alt="<%= booking.surfboard.name %>" style="height: 150px; width: 100%; object-fit: contain;">
+              <% end %>
             <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= booking.surfboard.name %></h5>

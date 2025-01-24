@@ -2,11 +2,16 @@
   <div class="card mb-3" style="max-width: 18rem;">
     <div class="card-body">
       <h5 class="card-title text-center">Congratulations! You have booked <%= @booking.surfboard.name %></h5>
-      <% if @booking.surfboard.image_url.present? %>
+      <% if @booking.surfboard.photo.attached? %>
         <div class="text-center">
-          <%= image_tag @booking.surfboard.image_url, class: "img-fluid rounded" %>
+          <%= cl_image_tag @booking.surfboard.photo.key, class: "img-fluid rounded", style: "width: 300px; height: 400px; object-fit: contain;" %>
+        </div>
+      <% else %>
+        <div class="text-center">
+          <img src="<%= @booking.surfboard.image_url %>" alt="<%= @booking.surfboard.name %> image" class="img-fluid rounded" style="width: 300px; height: 400px; object-fit: contain;">
         </div>
       <% end %>
+
       <p class="card-text"><strong>Price:</strong> $<%= @booking.surfboard.price %></p>
       <p class="card-text"><strong>Color:</strong> <%= @booking.surfboard.color %></p>
       <p class="card-text"><strong>Size:</strong> <%= @booking.surfboard.size %></p>

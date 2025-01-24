@@ -1,7 +1,7 @@
 class Surfboard < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_one_attached :photo
   has_many :reviews, dependent: :destroy
 
