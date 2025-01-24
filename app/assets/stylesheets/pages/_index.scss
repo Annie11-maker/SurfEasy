@@ -8,7 +8,8 @@ body {
   margin: 0;
   height: 100%;
   color: white;
-  background-color: #1987544a !important;
+  // background-color: #1987544a !important;
+  background-image: url("/assets/Surfboard-background1.jpg");
 
   /* Adjust text color for readability */
 }
@@ -16,3 +17,10 @@ body {
 text-align: center;
 padding: 20px;
 }
+
+h1 {
+  font-family: "Imperial Script", serif;
+  font-weight: bold;
+  font-style: normal;
+  // font-size: 50px;
+  }
