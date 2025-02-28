@@ -1,12 +1,16 @@
-<h1>Create a new booking for surfboard</h1>
-<h1>View Your Bookings 🌊 🏄🏽‍♂️</h1>
-<p>Surf in style 🏄🏾</p>
-<!-- app/views/restaurants/_form.html.erb -->
-<%= simple_form_for [@surfboard, @booking] do |f| %>
-  <%= f.label :start_time, "Start Time" %>
-  <%= f.datetime_select :start_time %>
-  <%= f.label :end_time, "End Time" %>
-  <%= f.datetime_select :end_time %>
+<div class="container">
+  <h1>Create a new booking for surfboard</h1>
+  <p>Surf in style 🏄🏾</p>
+  <%= simple_form_for [@surfboard, @booking] do |f| %>
+    <%= f.label :start_time, "Start Time" %>
+    <%= f.datetime_select :start_time %>
+    <br>
+    <br>
+    <%= f.label :end_time, "End Time" %>
+    <%= f.datetime_select :end_time %>
+    <br>
+    <br>
 
-  <%= f.submit "Create Booking" %>
-<% end %>
+    <%= f.submit "Create Booking", class: "btn-surfboard" %>
+  <% end %>
+</div>

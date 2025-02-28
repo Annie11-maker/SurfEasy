@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5 d-flex justify-content-center">
   <div class="card mb-3" style="max-width: 18rem;">
     <div class="card-body">
       <h5 class="card-title text-center">Congratulations! You have booked <%= @booking.surfboard.name %></h5>
@@ -18,10 +18,10 @@
       <div class="d-flex justify-content-between align-items-center">
         <%= link_to booking_path(@booking),
                     data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                    class: "btn btn-danger btn-sm" do %>
+                    class: "btn-surfboard btn-sm" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
-        <%= link_to "See All Your Bookings", bookings_path, class: "btn btn-primary btn-sm" %>
+        <%= link_to "See All Your Bookings", bookings_path, class: "btn-surfboard btn-sm" %>
       </div>
     </div>
   </div>

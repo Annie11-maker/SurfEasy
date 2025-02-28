@@ -2,9 +2,20 @@ class SurfboardsController < ApplicationController
   before_action :set_surfboard, only: [:destroy]
   def index
     @surfboards = Surfboard.all
+    @markers = @surfboards.geocoded.map do |surfboard|
+      {
+        lat: surfboard.latitude,
+        lng: surfboard.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {surfboard: surfboard})
+      }
+    end
   end
 
   def show
+    if !current_user
+      redirect_to new_user_registration_path
+      return
+    end
     @surfboard = Surfboard.find(params[:id])
     @review = Review.new
     @favorite = current_user.favorites.new

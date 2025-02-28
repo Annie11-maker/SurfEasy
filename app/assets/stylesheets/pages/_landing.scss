@@ -1,0 +1,46 @@
+.landing-page {
+  background-image: url("/assets/Surfboard-background.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  // justify-content: right;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: right;
+  color: #d2c8bc;
+  overflow: hidden;
+  //position: relative;
+
+}
+
+.btn-surfboard {
+  background-color: #2b5f70; /* Your custom color */
+  color: #d2c8bc; /* Text color to ensure visibility */
+  border: none; /* Optional: Remove border */
+  padding: 10px 20px; /* Adjust padding to suit your design */
+  border-radius: 5px; /* Rounded corners for the button */
+  text-align: center;
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Ensure it behaves like a button */
+  font-size: 16px; /* Adjust font size */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.btn-surfboard a {
+  color: #d2c8bc !important;
+  text-decoration: none; /* Ensure no underline in links */
+}
+
+
+.btn-surfboard:hover {
+  background-color: #5b828e; /* Slightly darker shade for hover */
+  color: #d2c8bc;
+}
+
+.btn-surfboard:disabled {
+  background-color: #5b828e; /* Slightly darker shade for hover */
+  color: #d2c8bc;
+}

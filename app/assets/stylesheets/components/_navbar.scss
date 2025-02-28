@@ -1,16 +1,69 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background:#7B66FF ;
+  background: #5b828e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 80px;
+  .h2 {
+    color: white !important;
+  }
+
+  .navbar-collapse {
+    flex-grow: 0;
+  }
+
+  .navbar-brand img {
+    height: 70px;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  // width: 70px;
-  height: 90px;
-}
-.navbar-lewagon h1 {
+.nav-link {
+  color: #d2c8bc !important;
+  font-size: 1.1rem;
+  text-transform: uppercase;
   font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+
+  &:hover {
+    color: #0d4255 !important;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #d2c8bc;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  //border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  a {
+    color: #0d4255 !important;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: #5b828e;
+      color: #d2c8bc !important;
+    }
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar-nav {
+    gap: 1rem;
+  }
 }

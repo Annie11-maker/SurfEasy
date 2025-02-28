@@ -15,14 +15,20 @@
 
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <header>
       <%= render "shared/navbar" %>
     </header>
+
+    <main class="flex-grow-1">
     <%= yield %>
     <%= render "shared/flashes" %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= render "shared/footer", year: Time.current.year %>
+    </main>
+
+    <footer>
+      <%= render "shared/footer", year: Time.current.year %>
+    </footer>
   </body>
 </html>

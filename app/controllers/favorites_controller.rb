@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @favorites = current_user.favorites.includes(:surfboard)
   end
@@ -19,4 +20,5 @@ class FavoritesController < ApplicationController
     @favorite.destroy
     redirect_to favorites_path, notice: 'Surfboard removed from favorites.'
   end
+
 end

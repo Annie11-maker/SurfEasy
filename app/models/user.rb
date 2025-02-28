@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :favorites, dependent: :destroy
   has_many :favorite_surfboards, through: :favorites, source: :surfboard
+  has_many :booking_requests, -> { where(status: :requested) }, class_name: 'Booking'
+
 
   validates :user_name, presence: true, uniqueness: true
   validates :first_name, presence: true

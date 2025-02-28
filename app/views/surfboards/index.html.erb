@@ -1,7 +1,7 @@
 <div class="container">
 <div class="header">
-  <h1>See our amazing surfboards</h1>
-  <p>Surf in style 🏄🏾</p>
+  <h1>Check Out These Amazing Surfboards!</h1>
+  <h2>Surf in style 🏄🏾</h2>
 </div>
   <div class="cards">
     <% @surfboards.each do |surfboard| %>
@@ -12,12 +12,21 @@
         <img src="<%= surfboard.image_url %>" alt="<%= surfboard.name %> image" width="200">
       <% end %>
         <div class="card-product-infos">
-          <%= link_to surfboard.name, surfboard_path(surfboard) %>
-          <p>Size: <%= surfboard.size %></p>
-          <p>Price: £<%= surfboard.price %>/day</p>
-          <p>Description: <%= surfboard.description %></p>
+          <%= link_to surfboard_path(surfboard), class: "card-link" do %>
+            <h3><%= surfboard.name %></h3>
+            <p>Size: <%= surfboard.size %></p>
+            <p>Price: £<%= surfboard.price %>/day</p>
+            <p>Description: <%= surfboard.description %></p>
+          <% end %>
         </div>
+
       </div>
     <% end %>
-      </div>
-    </div>
+  </div>
+  <br>
+  <br>
+  <div class="text-center">
+    <h2>Locations of our Surfboards</h2>
+    <div class="mt-4" style="width: 100%; height: 300px;" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>

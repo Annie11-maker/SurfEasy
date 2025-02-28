@@ -1,26 +1,2 @@
-// Import page-specific CSS files here.
 @import "home";
-body {
-  // background-image: url('https://previews.123rf.com/images/droidworks/droidworks1607/droidworks160700036/59706252-beach-background-with-surf-boards-photorealistic-vector.jpg');
-  // background-size: cover;
-  // background-position: center;
-  // background-repeat: no-repeat;
-  margin: 0;
-  height: 100%;
-  color: white;
-  // background-color: #1987544a !important;
-  background-image: url("/assets/Surfboard-background2.jpg");
-
-  /* Adjust text color for readability */
-}
-.header{
-text-align: center;
-padding: 20px;
-}
-
-h1 {
-  font-family: "Imperial Script", serif;
-  font-weight: 900;
-  font-style: normal;
-  font-size: 1.5rem;
-  }
+@import "landing";

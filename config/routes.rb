@@ -15,6 +15,12 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
     resource :favorites, only: [:create]
   end
-  resources :bookings, only: [:index, :show, :destroy]
+
+  resources :bookings, only: [:index, :show, :destroy] do
+    member do
+      put :accept # This adds a PUT route for the accept action
+    end
+  end
+
   resources :favorites, only: [:index, :destroy]
 end
